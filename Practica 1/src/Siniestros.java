@@ -1,8 +1,12 @@
-public class Siniestros {
-    int hora;
-    String lugar, descripcion, fecha;
-    char daño;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 
+public class Siniestros {
+    String lugar, descripcion, hora;
+    char daño;
+    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+    String fecha = formatoFecha.format(new Date());
     public Siniestros() {
 
     }
@@ -15,11 +19,11 @@ public class Siniestros {
         this.fecha = fecha;
     }
 
-    public int getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(int hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
@@ -47,4 +51,8 @@ public class Siniestros {
         this.daño = daño;
     }
 
+    public void setHora(LocalTime hora2) {
+    }
+
 }
+

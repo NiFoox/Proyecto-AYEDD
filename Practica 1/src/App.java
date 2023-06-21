@@ -1,10 +1,10 @@
+import java.time.LocalTime;
 import java.util.*;
-
 public class App {
     static int presupuesto;
+    static boolean poseeCober, poseeFranq, denuncia, certificado, nota, licencia, tarjeta_verde, fotos;
 
     public static void main(String[] args) throws InterruptedException {
-
         // Denunciante
         Scanner sc = new Scanner(System.in);
         Denunciantes denunciante = new Denunciantes();
@@ -36,14 +36,13 @@ public class App {
             System.out.println("Ingrese la patente del vehiculo: ");
             vehiculos[i].setPatente(sc.nextLine());
         }
-        System.out.println(vehiculos[0]);
         // Siniestro
         Siniestros siniestro = new Siniestros();
-        System.out.println("Ingrese la fecha del accidente: ");
+        System.out.println("Ingrese la fecha del accidente (dd/mm/aaaa): ");
         siniestro.setFecha(sc.nextLine());
-        System.out.println("Ingrese la hora del accidente (formato 24hs): ");
-        siniestro.setHora(sc.nextInt());
-        sc.nextLine();
+        System.out.println("Ingrese la hora del accidente (formato 24hs HH:mm): ");
+        LocalTime hora = LocalTime.parse(sc.nextLine());
+        siniestro.setHora(hora);
         System.out.println("Ingrese el lugar del accidente: ");
         siniestro.setLugar(sc.nextLine());
         System.out.println("Describa como ocurrio el accidente: ");
@@ -51,9 +50,8 @@ public class App {
         System.out.println("Ingrese el o los tipos de daños ocasionados(Vehicular (V)// Material (M)// Lesiones(L)): ");
         siniestro.setDaño(sc.next().charAt(0));
         menu();
-        if (presupuesto != 0) {
-            System.out.println("Su denuncia fue aprobada");
-        }
+       
+        sc.close();
     }
 
     private static void menu() {
@@ -66,12 +64,7 @@ public class App {
             opcion = sc.nextInt();
             sc.nextLine();
             switch (opcion) {
-                case 1:
-                    boolean poseeFranq = false;
-                    boolean poseeCober = false;
-                    boolean denuncia = false;
-                    boolean certificado = false;
-                    boolean nota = false;
+                case 1:            
                     int opcion2;
                     System.out.println(
                             "Si posee cobertura de seguro ingrese: 1 | Si posee franquicia ingrese: 2 | Salir: 0 ");
@@ -109,7 +102,6 @@ public class App {
                         }
                     }
                     if (poseeFranq == true) {
-
                         System.out.println("¿Tiene una Nota de franquicia emitida por su aseguradora? 1: Si | 2: No ");
                         if (sc.nextInt() == 1) {
                             nota = true;
@@ -119,7 +111,6 @@ public class App {
                             System.out.println("Opcion invalida");
                         }
                     }
-                    boolean licencia = false, tarjeta_verde = false, fotos = false;
                     System.out.println("¿Posee licencia de conducir? 1: Si | 2: No ");
                     if (sc.nextInt() == 1) {
                         licencia = true;
@@ -149,7 +140,16 @@ public class App {
                         System.out.println(
                                 "Su denuncia de siniestro fue aprobada. Porfavor ingrese un presupuesto para la reparación y la empresa se pondra en contacto: ");
                         presupuesto = sc.nextInt();
-
+                         if(presupuesto>0){
+                            System.out.println("Su denuncia fue aprobada");
+                         }
+                        while(presupuesto<=0){
+                            System.out.println("El monto ingresado no es valido, porfavor ingrese un monto mayor a 0");
+                            presupuesto=sc.nextInt();
+                        }
+                    }
+                    else{
+                        System.out.println("Su denuncia no fue aprobada porque no cumple los requisitos necesarios");
                     }
                     break;
                 case 2:

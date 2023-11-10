@@ -1,0 +1,15 @@
+[ {
+  "habitacionNumero" : 101,
+  "fechaEntrada" : [ 2023, 12, 1 ],
+  "fechaSalida" : [ 2023, 12, 15 ],
+  "nombreUsuario" : "Manuel Perez",
+  "dniUsuario" : 45492831,
+  "mailUsuario" : "es.mperez6@hotmail.com"
+}, {
+  "habitacionNumero" : 102,
+  "fechaEntrada" : [ 2023, 12, 15 ],
+  "fechaSalida" : [ 2023, 12, 30 ],
+  "nombreUsuario" : "Donato Cacchiarelli",
+  "dniUsuario" : 45493562,
+  "mailUsuario" : "nifoox@gmail.com"
+} ]
